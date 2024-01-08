@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+src/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+src/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+src/obj/Debug/SmelterMiner.csproj.FileListAbsolute.txt
+src/obj/Debug/SmelterMiner.pdb

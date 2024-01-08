@@ -15,3 +15,8 @@ G:\work\CSFile\SmelterMiner\src\obj\Debug\SmelterMiner.csproj.CoreCompileInputs.
 G:\work\CSFile\SmelterMiner\src\obj\Debug\SmelterMiner.csproj.CopyComplete
 G:\work\CSFile\SmelterMiner\src\obj\Debug\SmelterMiner.dll
 G:\work\CSFile\SmelterMiner\src\obj\Debug\SmelterMiner.pdb
+F:\GitHubRepository\SmelterMiner\src\obj\Debug\SmelterMiner.csproj.AssemblyReference.cache
+F:\GitHubRepository\SmelterMiner\src\obj\Debug\SmelterMiner.csproj.CoreCompileInputs.cache
+F:\GitHubRepository\SmelterMiner\src\obj\Debug\SmelterMiner.csproj.CopyComplete
+F:\GitHubRepository\SmelterMiner\src\obj\Debug\SmelterMiner.dll
+F:\GitHubRepository\SmelterMiner\src\obj\Debug\SmelterMiner.pdb

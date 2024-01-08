@@ -62,7 +62,7 @@ Problems may arise when other mods that create new items/recipes use the followi
 Besides, since this mod changes the function that controlls the normal mining, it may cause some related mods lose their functions (such as infinate mining). This mod provides a way that you can customize your own mining rate (not mining speed) in the config file.
 
 ### ChangeLog
-v1.7.0: Updated to work with game version 0.10.28.21247.  
+v1.6.4: Updated to work with game version 0.10.28.21247.  
 
 v1.6.3: Updated to work with game version 0.9.26.13026.
 
@@ -136,7 +136,7 @@ StringProto.ID: 10547, 10548, 10549, 10550, 10551, 10552, 10577, 10578, 10579, 1
 此外，这个mod修改了正常采矿的函数，所以可能会导致一些相关的mod失效（尤其是使用了prefix的，例如无限采矿），因此这个mod提供了一个可以自定义采矿消耗率（不是采矿速度）的功能，可以在config文件中修改。
 
 ### 更新
-v1.7.0: 更新以适配游戏版本 0.10.28.21247。  
+v1.6.4: 更新以适配游戏版本 0.10.28.21247。  
 
 v1.6.3: 更新以适配游戏版本 0.9.26.13026。
 
