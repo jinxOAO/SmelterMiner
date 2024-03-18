@@ -993,7 +993,7 @@ namespace SmelterMiner
                 LDBTool.SetBuildBar(2, 8, 9466);
                 LDBTool.SetBuildBar(2, 9, 9467);
                 LDBTool.SetBuildBar(2, 10, 9468);
-                LDBTool.SetBuildBar(7, 5, 9469);
+                //LDBTool.SetBuildBar(7, 5, 9469);
             }
             catch (Exception)
             {
