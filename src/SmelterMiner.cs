@@ -39,7 +39,7 @@ namespace SmelterMiner
         public static Dictionary<int, int> ProductMapB;
         public static Dictionary<int, int> ProductMapC;
         public static Dictionary<int, int> ProductMapO;
-        public static Dictionary<int, int> SmelterRatio; // key是产物id，value是每消耗一个矿物的一级产物产出量
+        public static Dictionary<int, int> SmelterRatio; // key是产物id，value是每个一级产物产出，所需消耗的矿物数量
 
         public static ResourceData resources;
         void Awake()
@@ -98,11 +98,26 @@ namespace SmelterMiner
             ProductMapB.Add(1013, 1113);
             SmelterRatio.Add(1113, 1);
 
+            ProductMapA.Add(6201, 7705);
+            ProductMapB.Add(6201, 7705);
+            SmelterRatio.Add(7705, 1);
+
+            ProductMapA.Add(6202, 6203);
+            ProductMapB.Add(6202, 6203);
+            SmelterRatio.Add(6203, 1);
+
+            ProductMapA.Add(6207, 6277);
+            ProductMapB.Add(6207, 6277);
+            SmelterRatio.Add(6277, 1);
+
             ProductMapC.Add(1011, 1123);
             SmelterRatio.Add(1123, 1);
 
             ProductMapC.Add(1015, 1124);
-            SmelterRatio.Add(1124, 1);
+            SmelterRatio.Add(1124, 2);
+
+            ProductMapC.Add(1117, 7709);
+            SmelterRatio.Add(7709, 8);
 
             //ProductMapC.Add(1005, 1003);
             //SmelterRatio.Add(1003, 10);
@@ -295,9 +310,11 @@ namespace SmelterMiner
                                             factory.veinAnimPool[num].time = ((veinPool[num].amount >= 20000) ? 0f : (1f - (float)veinPool[num].amount * 5E-05f));
                                             if (veinPool[num].amount <= 0)
                                             {
+                                                int veinType = (int)veinPool[num].type;
+                                                Vector3 pos = veinPool[num].pos;
                                                 factory.RemoveVeinWithComponents(num);
                                                 factory.RecalculateVeinGroup(groupIndex);
-                                                factory.NotifyVeinExhausted();
+                                                factory.NotifyVeinExhausted(veinType, pos);
                                                 __instance.RemoveVeinFromArray(__instance.currentVeinIndex);
                                                 __instance.GetMinimumVeinAmount(factory, veinPool);
                                             }
@@ -719,7 +736,7 @@ namespace SmelterMiner
             SMinerBigARecipe.ItemCounts = new int[] { 1, 20, 20 };
             SMinerBigARecipe.Results = new int[] { 9466 };
             SMinerBigARecipe.ResultCounts = new int[] { 1 };
-            SMinerBigARecipe.GridIndex = 2510;
+            SMinerBigARecipe.GridIndex = 2710;
             //SMinerBigARecipe.SID = "2509";
             //SMinerBigARecipe.sid = "2509".Translate();
             Traverse.Create(SMinerBigARecipe).Field("_iconSprite").SetValue(iconBigA);
@@ -738,7 +755,7 @@ namespace SmelterMiner
             SMinerBigA.Description = "大型熔炉采矿机A型描述";
             SMinerBigA.description = "大型熔炉采矿机A型描述".Translate();
             SMinerBigA.BuildIndex = 208;
-            SMinerBigA.GridIndex = 2510;
+            SMinerBigA.GridIndex = 2710;
             SMinerBigA.handcraft = SMinerBigARecipe;
             SMinerBigA.handcrafts = new List<RecipeProto> { SMinerBigARecipe };
             SMinerBigA.maincraft = SMinerBigARecipe;
@@ -809,7 +826,7 @@ namespace SmelterMiner
             SMinerBigBRecipe.ItemCounts = new int[] { 1, 20, 20 };
             SMinerBigBRecipe.Results = new int[] { 9467 };
             SMinerBigBRecipe.ResultCounts = new int[] { 1 };
-            SMinerBigBRecipe.GridIndex = 2511;
+            SMinerBigBRecipe.GridIndex = 2711;
             //SMinerBigBRecipe.SID = "2509";
             //SMinerBigBRecipe.sid = "2509".Translate();
             Traverse.Create(SMinerBigBRecipe).Field("_iconSprite").SetValue(iconBigB);
@@ -828,7 +845,7 @@ namespace SmelterMiner
             SMinerBigB.Description = "大型熔炉采矿机B型描述";
             SMinerBigB.description = "大型熔炉采矿机B型描述".Translate();
             SMinerBigB.BuildIndex = 209;
-            SMinerBigB.GridIndex = 2511;
+            SMinerBigB.GridIndex = 2711;
             SMinerBigB.handcraft = SMinerBigBRecipe;
             SMinerBigB.handcrafts = new List<RecipeProto> { SMinerBigBRecipe };
             SMinerBigB.maincraft = SMinerBigBRecipe;
@@ -900,7 +917,7 @@ namespace SmelterMiner
             SMinerBigCRecipe.ItemCounts = new int[] { 1, 30, 10 };
             SMinerBigCRecipe.Results = new int[] { 9468 };
             SMinerBigCRecipe.ResultCounts = new int[] { 1 };
-            SMinerBigCRecipe.GridIndex = 2512;
+            SMinerBigCRecipe.GridIndex = 2712;
             //SMinerBigCRecipe.SID = "2509";
             //SMinerBigCRecipe.sid = "2509".Translate();
             Traverse.Create(SMinerBigCRecipe).Field("_iconSprite").SetValue(iconBigC);
@@ -919,7 +936,7 @@ namespace SmelterMiner
             SMinerBigC.Description = "大型化工采矿机C型描述";
             SMinerBigC.description = "大型化工采矿机C型描述".Translate();
             SMinerBigC.BuildIndex = 210;
-            SMinerBigC.GridIndex = 2512;
+            SMinerBigC.GridIndex = 2712;
             SMinerBigC.handcraft = SMinerBigCRecipe;
             SMinerBigC.handcrafts = new List<RecipeProto> { SMinerBigCRecipe };
             SMinerBigC.maincraft = SMinerBigCRecipe;
