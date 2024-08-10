@@ -38,12 +38,11 @@ Stone: Glass
 Fire ice: Graphene     
 Spiniform stalagmite crystal: Carbon nanotube
 
-The Refinery Oil Extractor was placed in the Research build bar (7) instead of Gathering (2), due to insufficient build bar slots.
 
 ### Installation
 
 1. Install BepInEx.  
-2. Install LDBTool. (version lower than 1.7.0 may cause errors)   
+2. Install all dependency mods that this mod requires.   
 3. Drag SmelterMiner.dll into "Dyson Sphere Program/BepInEx/plugins/"  
 
 ### Mod conflicts
@@ -62,18 +61,40 @@ Problems may arise when other mods that create new items/recipes use the followi
 Besides, since this mod changes the function that controlls the normal mining, it may cause some related mods lose their functions (such as infinate mining). This mod provides a way that you can customize your own mining rate (not mining speed) in the config file.
 
 ### ChangeLog
-v1.6.4: Updated to work with game version 0.10.28.21247.  
+- v1.6.9
+	+ Fixed a translate error
+	+ Used BuildBarTool to rebind the mining machines' build bar position.
 
-v1.6.3: Updated to work with game version 0.9.26.13026.
+- v1.6.8: 
+	+ Updated to work with game version 0.10.29.22010.   
 
-v1.6.2: Updated to work with game version 0.9.25.11985.
+- v1.6.7: 
+	+ Add compatible features with Genesis Book (Aluminum, Sulfer, Tungsten and Polyimide).   
+	+ Fix a bug where the refinery oil extrator occupied a turret's position in the build menu.   
+ 
+- v1.6.6: 
+	+ Change the Advance Smelter Miners' positions so as not to block the vanilla item.
 
-v1.6.1: Fix a bug that may occur later in the game.   
-The error might affect the function of the miner (i.e. no products). If there is any abnormality, please contact me.
+- v1.6.5: 
+	+ Fixed a build menu bug.  
 
-v1.6.0: Add the new building: Refinery Oil Extractor.  
-	Fix display problems of the recipe links.  
-	Fix a problem that the mining machine only produces one instead of two diamond with each Kimberlite ore.  
+- v1.6.4: 
+	+ Updated to work with game version 0.10.28.21247.  
+
+- v1.6.3: 
+	+ Updated to work with game version 0.9.26.13026.
+
+- v1.6.2: 
+	+ Updated to work with game version 0.9.25.11985.
+
+- v1.6.1: 
+	+ Fix a bug that may occur later in the game.   
+	+ The error might affect the function of the miner (i.e. no products). If there is any abnormality, please contact me.
+
+- v1.6.0: 
+	+ Add the new building: Refinery Oil Extractor.  
+	+ Fix display problems of the recipe links.  
+	+ Fix a problem that the mining machine only produces one instead of two diamond with each Kimberlite ore.  
 	(Known issue: The diamond output speed displayed in the miner is still half. But the actual output speed and the speed displayed in the statistics panel are correct.)  
 
 See the previous changelog at the end.
@@ -90,7 +111,6 @@ C型则旨在替代矿机+化工厂的功能，专门采集可燃冰输出石墨
 工作功率 A/B/C：2.4 / 2.4 / 4.8 MW（大型矿机则是7.5 / 7.5 / 9.0 MW）  （等离子精炼油井为6.0MW）
 待机功率 A/B/C：60 / 60 / 120 kW（大型矿机则是180 / 180 / 180 kW）  （等离子精炼油井为150kW）
 
-由于建造栏位置不足，等离子精炼油井被放在了研究栏（7）中而不是采集（2）。  
 
 ### A和B（包括大型A和B）相同的处理方式（地表矿脉：矿机输出），注意C以及大型C矿机不能处理这个
 
@@ -119,7 +139,7 @@ C型则旨在替代矿机+化工厂的功能，专门采集可燃冰输出石墨
 ### 安装
 
 1. 安装 BepInEx框架。  
-2. 安装 LDBTool. （低于1.7.0的版本可能会导致错误）感谢宵夜97提供了方便的工具。  
+2. 安装所有前置MOD.  
 3. 将SmelterMiner.dll放入 "Dyson Sphere Program/BepInEx/plugins/"文件夹内
 
 ### Mod冲突
@@ -136,19 +156,41 @@ StringProto.ID: 10547, 10548, 10549, 10550, 10551, 10552, 10577, 10578, 10579, 1
 此外，这个mod修改了正常采矿的函数，所以可能会导致一些相关的mod失效（尤其是使用了prefix的，例如无限采矿），因此这个mod提供了一个可以自定义采矿消耗率（不是采矿速度）的功能，可以在config文件中修改。
 
 ### 更新
-v1.6.4: 更新以适配游戏版本 0.10.28.21247。  
+- v1.6.9: 
+	+ 修复了一个翻译错误。
+	+ 借助BuildBarTool，将新采矿机的快速建造栏按钮重新安排在了第二行。
 
-v1.6.3: 更新以适配游戏版本 0.9.26.13026。
+- v1.6.8: 
+	+ 更新以适配游戏版本 0.10.29.22010.    
 
-v1.6.2: 更新以适配游戏版本 0.9.25.11985。
+- v1.6.7: 
+	+ 对创世之书进行了适配性改动，在熔炉矿机中增加了铝、钨、硫矿的熔炼配方以及聚酰亚胺的化工配方。  
+	+ 修复了一个等离子精炼油井错误地占用炮塔建造栏的问题。  
 
-v1.6.1: 修复一个可能在游戏后期导致报错的问题。  
-该bug可能导致矿机功能异常（没有产物），如果有任何异常请联系我。
+- v1.6.6: 
+	+ 修改大型熔炉矿机的位置以免阻挡游戏原本的物品。  
 
-v1.6.0: 新增等离子精炼油井。  
-	修复物品配方链接在简单模式下显示不正确的问题。  
-	修复采集一个金伯利矿石只能产出一个钻石而非两个的问题。  
-	（已知问题：在矿机内显示的产出钻石的速度仍为一半。但是实际产出速度和在数据分析面板中显示的速度是正确的。）  
+- v1.6.5: 
+	+ 修复一个建造栏的bug。  
+
+- v1.6.4: 
+	+ 更新以适配游戏版本 0.10.28.21247。  
+
+- v1.6.3: 
+	+ 更新以适配游戏版本 0.9.26.13026。
+
+- v1.6.2: 
+	+ 更新以适配游戏版本 0.9.25.11985。
+
+- v1.6.1: 
+	+ 修复一个可能在游戏后期导致报错的问题。  
+	+ 该bug可能导致矿机功能异常（没有产物），如果有任何异常请联系我。
+
+- v1.6.0: 
+	+ 新增等离子精炼油井。  
+	+ 修复物品配方链接在简单模式下显示不正确的问题。  
+	+ 修复采集一个金伯利矿石只能产出一个钻石而非两个的问题。  
+	+ （已知问题：在矿机内显示的产出钻石的速度仍为一半。但是实际产出速度和在数据分析面板中显示的速度是正确的。）  
 
 ### Previous Versions 更早版本
 v1.5.0: A placed Smelter Miner will now display the correct product icon instead of the original ore icon of the vein. (only works for the miners built after this update)   

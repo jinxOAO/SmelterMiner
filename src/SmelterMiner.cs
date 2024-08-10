@@ -710,7 +710,7 @@ namespace SmelterMiner
             SMinerA.name = "熔炉采矿机A型".Translate();
             SMinerA.Description = "熔炉采矿机A型描述";
             SMinerA.description = "熔炉采矿机A型描述".Translate();
-            SMinerA.BuildIndex = 205;
+            SMinerA.BuildIndex = 221;
             SMinerA.GridIndex = 2610;
             SMinerA.handcraft = SMinerARecipe;
             SMinerA.handcrafts = new List<RecipeProto> { SMinerARecipe };
@@ -754,7 +754,7 @@ namespace SmelterMiner
             SMinerBigA.name = "大型熔炉采矿机A型".Translate();
             SMinerBigA.Description = "大型熔炉采矿机A型描述";
             SMinerBigA.description = "大型熔炉采矿机A型描述".Translate();
-            SMinerBigA.BuildIndex = 208;
+            SMinerBigA.BuildIndex = 224;
             SMinerBigA.GridIndex = 2710;
             SMinerBigA.handcraft = SMinerBigARecipe;
             SMinerBigA.handcrafts = new List<RecipeProto> { SMinerBigARecipe };
@@ -800,7 +800,7 @@ namespace SmelterMiner
             SMinerB.name = "熔炉采矿机B型".Translate();
             SMinerB.Description = "熔炉采矿机B型描述";
             SMinerB.description = "熔炉采矿机B型描述".Translate();
-            SMinerB.BuildIndex = 206;
+            SMinerB.BuildIndex = 222;
             SMinerB.GridIndex = 2611;
             SMinerB.handcraft = SMinerBRecipe;
             SMinerB.handcrafts = new List<RecipeProto> { SMinerBRecipe };
@@ -844,7 +844,7 @@ namespace SmelterMiner
             SMinerBigB.name = "大型熔炉采矿机B型".Translate();
             SMinerBigB.Description = "大型熔炉采矿机B型描述";
             SMinerBigB.description = "大型熔炉采矿机B型描述".Translate();
-            SMinerBigB.BuildIndex = 209;
+            SMinerBigB.BuildIndex = 225;
             SMinerBigB.GridIndex = 2711;
             SMinerBigB.handcraft = SMinerBigBRecipe;
             SMinerBigB.handcrafts = new List<RecipeProto> { SMinerBigBRecipe };
@@ -890,7 +890,7 @@ namespace SmelterMiner
             SMinerC.name = "化工采矿机C型".Translate();
             SMinerC.Description = "化工采矿机C型描述";
             SMinerC.description = "化工采矿机C型描述".Translate();
-            SMinerC.BuildIndex = 207;
+            SMinerC.BuildIndex = 223;
             SMinerC.GridIndex = 2612;
             SMinerC.handcraft = SMinerCRecipe;
             SMinerC.handcrafts = new List<RecipeProto> { SMinerCRecipe };
@@ -935,7 +935,7 @@ namespace SmelterMiner
             SMinerBigC.name = "大型化工采矿机C型".Translate();
             SMinerBigC.Description = "大型化工采矿机C型描述";
             SMinerBigC.description = "大型化工采矿机C型描述".Translate();
-            SMinerBigC.BuildIndex = 210;
+            SMinerBigC.BuildIndex = 226;
             SMinerBigC.GridIndex = 2712;
             SMinerBigC.handcraft = SMinerBigCRecipe;
             SMinerBigC.handcrafts = new List<RecipeProto> { SMinerBigCRecipe };
@@ -984,7 +984,7 @@ namespace SmelterMiner
             newOilDrill.name = "等离子精炼油井".Translate();
             newOilDrill.Description = "等离子精炼油井描述";
             newOilDrill.description = "等离子精炼油井描述".Translate();
-            newOilDrill.BuildIndex = 705;
+            newOilDrill.BuildIndex = 227;
             newOilDrill.GridIndex = 2609;
             newOilDrill.handcraft = newOilDrillRecipe;
             newOilDrill.handcrafts = new List<RecipeProto> { newOilDrillRecipe };
@@ -1004,12 +1004,12 @@ namespace SmelterMiner
             //快速建造栏
             try
             {
-                LDBTool.SetBuildBar(2, 5, 9446);
-                LDBTool.SetBuildBar(2, 6, 9447);
-                LDBTool.SetBuildBar(2, 7, 9448);
-                LDBTool.SetBuildBar(2, 8, 9466);
-                LDBTool.SetBuildBar(2, 9, 9467);
-                LDBTool.SetBuildBar(2, 10, 9468);
+                //LDBTool.SetBuildBar(2, 5, 9446);
+                //LDBTool.SetBuildBar(2, 6, 9447);
+                //LDBTool.SetBuildBar(2, 7, 9448);
+                //LDBTool.SetBuildBar(2, 8, 9466);
+                //LDBTool.SetBuildBar(2, 9, 9467);
+                //LDBTool.SetBuildBar(2, 10, 9468);
                 //LDBTool.SetBuildBar(7, 5, 9469);
             }
             catch (Exception)
@@ -1195,9 +1195,9 @@ namespace SmelterMiner
             //LDBTool.PreAddProto(ProtoType.String, recipeBig3Name);
             //LDBTool.PreAddProto(ProtoType.String, Big3desc);
 
-            LocalizationModule.RegisterTranslation("化工采矿机C型", "Smelter Mining Machine B", "化工采矿机 C型", "Smelter Mining Machine B");
+            LocalizationModule.RegisterTranslation("化工采矿机C型", "Smelter Mining Machine C", "化工采矿机 C型", "Smelter Mining Machine C");
             LocalizationModule.RegisterTranslation("化工采矿机C型描述", "Mine fire ice, output graphene. Mine spiniform stalagmite crystal, output carbon nanotube.", "采集可燃冰输出石墨烯（氢气会被浪费），采集刺笋晶体输出碳纳米管。", "Mine fire ice, output graphene. Mine spiniform stalagmite crystal, output carbon nanotube.");
-            LocalizationModule.RegisterTranslation("大型化工采矿机C型", "Advanced Smelter Mining Machine B", "大型化工采矿机 C型", "Advanced Smelter Mining Machine B");
+            LocalizationModule.RegisterTranslation("大型化工采矿机C型", "Advanced Smelter Mining Machine C", "大型化工采矿机 C型", "Advanced Smelter Mining Machine C");
             LocalizationModule.RegisterTranslation("大型化工采矿机C型描述", "Mine fire ice, output graphene. Mine spiniform stalagmite crystal, output carbon nanotube.", "采集可燃冰输出石墨烯（氢气会被浪费），采集刺笋晶体输出碳纳米管。", "Mine fire ice, output graphene. Mine spiniform stalagmite crystal, output carbon nanotube.");
         }
 
