@@ -50,13 +50,9 @@ Spiniform stalagmite crystal: Carbon nanotube
 Problems may arise when other mods that create new items/recipes use the following IDs:  
 RecipeProto.ID: 452, 453, 454, 472, 473, 474, 475.  
 ItemProto.ID: 9446, 9447, 9448, 9466, 9467, 9468, 9469.  
-StringProto.ID: 10547, 10548, 10549, 10550, 10551, 10552, 10577, 10578, 10579, 10580, 10581, 10582, 10583, 10584.  
 
 Problems may arise when other mods that create new items/recipes use the following GridIndex:  
 2610, 2611, 2612, 2510, 2511, 2512, 2609.  
-
-Problems may arise when other mods that create new items/recipes use the following BuildIndex:  
-205, 206, 207, 208, 209, 210, 705.   
 
 Besides, since this mod changes the function that controlls the normal mining, it may cause some related mods lose their functions (such as infinate mining). This mod provides a way that you can customize your own mining rate (not mining speed) in the config file.
 
@@ -147,11 +143,8 @@ C型则旨在替代矿机+化工厂的功能，专门采集可燃冰输出石墨
 当其他创造新物品/配方的mod使用了以下ID时，可能会产生问题：  
 RecipeProto.ID: 452, 453, 454, 472, 473, 474, 475.  
 ItemProto.ID: 9446, 9447, 9448, 9466, 9467, 9468, 9469.  
-StringProto.ID: 10547, 10548, 10549, 10550, 10551, 10552, 10577, 10578, 10579, 10580, 10581, 10582, 10583, 10584.  
 当其他创造新物品/配方的mod使用了以下位置时，可能会产生问题： 
 2610, 2611, 2612, 2510, 2511, 2512, 2609.  
-当其他创造新物品/配方的mod使用了以下快速建造栏位置时，可能会产生问题：  
-205, 206, 207, 208, 209, 210, 705.
 
 此外，这个mod修改了正常采矿的函数，所以可能会导致一些相关的mod失效（尤其是使用了prefix的，例如无限采矿），因此这个mod提供了一个可以自定义采矿消耗率（不是采矿速度）的功能，可以在config文件中修改。
 
