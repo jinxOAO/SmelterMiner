@@ -166,7 +166,6 @@ namespace SmelterMiner
         {
             try
             {
-
                 if (ActiveCustomizeRate.Value)
                 {
                     miningRate = CustomRate.Value;
@@ -272,41 +271,36 @@ namespace SmelterMiner
                                 {
                                     if (miningRate > 0f)
                                     {
-                                        int num4 = 0;
-                                        if (miningRate < 0.99999f)
+                                        double num4 = (double)miningRate * (double)num2 * cratio1; //重要！！多乘了一个消耗倍率，确保消耗是正确的，但是仍需要测试bug
+                                        __instance.costFrac += num4;
+                                        int num5;
+                                        if (__instance.costFrac < (double)veinPool[num].amount)
                                         {
-                                            for (int i = 0; i < num2; i++)
-                                            {
-                                                __instance.seed = (uint)((ulong)(__instance.seed % 2147483646u + 1u) * 48271UL % 2147483647UL) - 1u;
-                                                num4 += ((__instance.seed / 2147483646.0 < (double)miningRate) ? 1 : 0);
-                                                num3++;
-                                                if (num4 == veinPool[num].amount)
-                                                {
-                                                    break;
-                                                }
-
-                                            }
+                                            num3 = num2;
+                                            num5 = (int)__instance.costFrac;
+                                            __instance.costFrac -= (double)num5;
                                         }
                                         else
                                         {
-                                            num3 = ((num2 > veinPool[num].amount) ? veinPool[num].amount : num2);
-                                            num4 = num3;
+                                            num5 = veinPool[num].amount;
+                                            double num6 = __instance.costFrac - num4;
+                                            double num7 = ((double)num5 - num6) / num4;
+                                            double num8 = (double)num2 * num7;
+                                            num3 = (int)(Math.Ceiling(num8) + 0.01);
+                                            __instance.costFrac = (double)miningRate * ((double)num3 - num8);
                                         }
-                                        if (num4 > 0)
+                                        if (num5 > 0)
                                         {
-                                            //重要！！确保消耗是正确的，但是仍需要测试bug
-                                            num4 *= cratio1;
-                                            //!!!!!!!!!!!!!!!!
                                             int groupIndex = (int)veinPool[num].groupIndex;
-                                            int num5 = num;
-                                            veinPool[num5].amount = veinPool[num5].amount - num4;
+                                            int num9 = num;
+                                            veinPool[num9].amount = veinPool[num9].amount - num5;
                                             if (veinPool[num].amount < __instance.minimumVeinAmount)
                                             {
                                                 __instance.minimumVeinAmount = veinPool[num].amount;
                                             }
                                             VeinGroup[] veinGroups = factory.veinGroups;
-                                            int num6_vanilla = groupIndex;
-                                            veinGroups[num6_vanilla].amount = veinGroups[num6_vanilla].amount - (long)num4;
+                                            int num10 = groupIndex;
+                                            veinGroups[num10].amount = veinGroups[num10].amount - (long)num5;
                                             factory.veinAnimPool[num].time = ((veinPool[num].amount >= 20000) ? 0f : (1f - (float)veinPool[num].amount * 5E-05f));
                                             if (veinPool[num].amount <= 0)
                                             {
@@ -315,18 +309,18 @@ namespace SmelterMiner
                                                 factory.RemoveVeinWithComponents(num);
                                                 factory.RecalculateVeinGroup(groupIndex);
                                                 factory.NotifyVeinExhausted(veinType, pos);
-                                                __instance.RemoveVeinFromArray(__instance.currentVeinIndex);
-                                                __instance.GetMinimumVeinAmount(factory, veinPool);
                                             }
                                             else
                                             {
                                                 __instance.currentVeinIndex++;
                                             }
                                         }
+                                        
                                     }
                                     else
                                     {
                                         num3 = num2;
+                                        __instance.costFrac = 0.0;
                                     }
                                     int actual_produce_count = num3;//纯为了金伯利矿石服务
                                     if (__instance.productId == 1112)//金伯利钻石每消耗一个矿，产出两个钻石。因此如果产物是钻石，直接乘二。注意time减少的时候不能用乘2之后的值。因此上面新建了一个变量
@@ -367,9 +361,9 @@ namespace SmelterMiner
                         {
                             goto IL_74B;
                         }
-                        int num6 = __instance.veins[0];
+                        int num11 = __instance.veins[0];
                         VeinData[] obj = veinPool;
-                        int OriOilID = veinPool[num6].productId;
+                        int OriOilID = veinPool[num11].productId;
                         int OutputOilID = OriOilID;
                         if (mapDict.ContainsKey(OriOilID))
                         {
@@ -377,56 +371,47 @@ namespace SmelterMiner
                         }
                         lock (obj)
                         {
-                            float num7 = (float)veinPool[num6].amount * VeinData.oilSpeedMultiplier;
+                            float num12 = (float)veinPool[num11].amount * VeinData.oilSpeedMultiplier;
                             if (__instance.time < __instance.period)
                             {
-                                __instance.time += (int)(power * (float)__instance.speed * miningSpeed * num7 + 0.5f);
+                                __instance.time += (int)(power * __instance.speedDamper * (float)__instance.speed * miningSpeed * num12 + 0.5f);
                                 result = 1u;
                             }
                             if (__instance.time >= __instance.period && __instance.productCount < 50)
                             {
                                 __instance.productId = OutputOilID;//__instance.productId = veinPool[num6].productId;
-                                int num8 = __instance.time / __instance.period;
-                                int num9 = 0;
-                                if (miningRate > 0f && veinPool[num6].amount > 2500)
+                                int num13 = __instance.time / __instance.period;
+                                if (miningRate > 0f && veinPool[num11].amount > 2500)
                                 {
-                                    int num10 = 0;
-                                    int num12_vanilla = veinPool[num6].amount - 2500;
-                                    for (int j = 0; j < num8; j++)
+                                    __instance.costFrac += (double)miningRate * (double)num13;
+                                    int num14 = (int)__instance.costFrac;
+                                    __instance.costFrac -= (double)num14;
+                                    int num15 = veinPool[num11].amount - 2500;
+                                    if (num14 > 0)
                                     {
-                                        __instance.seed = (uint)((ulong)(__instance.seed % 2147483646u + 1u) * 48271UL % 2147483647UL) - 1u;
-                                        num10 += ((__instance.seed / 2147483646.0 < (double)miningRate) ? 1 : 0);
-                                        num9++;
-                                        //if (num10 == veinPool[num6].amount)
-                                        //{
-                                        //    break;
-                                        //}
-                                    }
-                                    if (num10 > 0)
-                                    {
-                                        if (num10 > num12_vanilla)
+                                        if (num14 > num15)
                                         {
-                                            num10 = num12_vanilla;
+                                            num14 = num15;
                                         }
-                                        int num11 = num6;
-                                        veinPool[num11].amount = veinPool[num11].amount - num10;
-                                        VeinGroup[] veinGroups3 = factory.veinGroups;
-                                        short groupIndex3 = veinPool[num6].groupIndex;
-                                        veinGroups3[(int)groupIndex3].amount = veinGroups3[(int)groupIndex3].amount - (long)num10;
-                                        factory.veinAnimPool[num6].time = ((veinPool[num6].amount >= 25000) ? 0f : (1f - (float)veinPool[num6].amount * VeinData.oilSpeedMultiplier));
+                                        int num16 = num11;
+                                        veinPool[num16].amount = veinPool[num16].amount - num14;
+                                        VeinGroup[] veinGroups2 = factory.veinGroups;
+                                        short groupIndex2 = veinPool[num11].groupIndex;
+                                        veinGroups2[(int)groupIndex2].amount = veinGroups2[(int)groupIndex2].amount - (long)num14;
+                                        factory.veinAnimPool[num11].time = ((veinPool[num11].amount >= 25000) ? 0f : (1f - (float)veinPool[num11].amount * VeinData.oilSpeedMultiplier));
+                                        if (veinPool[num11].amount <= 2500)
+                                        {
+                                            factory.NotifyVeinExhausted((int)veinPool[num11].type, veinPool[num11].pos);
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    num9 = num8;
-                                }
-                                __instance.productCount += num9;
+                                __instance.productCount += num13;
                                 int[] obj2 = productRegister;
                                 lock (obj2)
                                 {
-                                    productRegister[__instance.productId] += num9;
+                                    productRegister[__instance.productId] += num13;
                                 }
-                                __instance.time -= __instance.period * num9;
+                                __instance.time -= __instance.period * num13;
                             }
                             goto IL_74B;
                         }
