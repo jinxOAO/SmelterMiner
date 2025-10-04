@@ -229,6 +229,14 @@ namespace SmelterMiner
                         if (__instance.time <= __instance.period)
                         {
                             __instance.time += (int)(power * (float)__instance.speed * miningSpeed * (float)__instance.veinCount / (float)cratio1);//按照熔炼比例需要除以比例系数，以控制产出量是正确的，下同
+                            if (__instance.time < -2000000000)
+                            {
+                                __instance.time = int.MaxValue;
+                            }
+                            else if (__instance.time < 0)
+                            {
+                                __instance.time = 0;
+                            }
                             result = 1u;
                         }
                         if (__instance.time < __instance.period)
@@ -304,11 +312,12 @@ namespace SmelterMiner
                                             factory.veinAnimPool[num].time = ((veinPool[num].amount >= 20000) ? 0f : (1f - (float)veinPool[num].amount * 5E-05f));
                                             if (veinPool[num].amount <= 0)
                                             {
-                                                int veinType = (int)veinPool[num].type;
+                                                int veinType = (int)veinPool[num].type; 
+                                                int groupIndex2 = (int)veinPool[num].groupIndex;
                                                 Vector3 pos = veinPool[num].pos;
                                                 factory.RemoveVeinWithComponents(num);
                                                 factory.RecalculateVeinGroup(groupIndex);
-                                                factory.NotifyVeinExhausted(veinType, pos);
+                                                factory.NotifyVeinExhausted(veinType, groupIndex2, pos);
                                             }
                                             else
                                             {
@@ -401,7 +410,7 @@ namespace SmelterMiner
                                         factory.veinAnimPool[num11].time = ((veinPool[num11].amount >= 25000) ? 0f : (1f - (float)veinPool[num11].amount * VeinData.oilSpeedMultiplier));
                                         if (veinPool[num11].amount <= 2500)
                                         {
-                                            factory.NotifyVeinExhausted((int)veinPool[num11].type, veinPool[num11].pos);
+                                            factory.NotifyVeinExhausted((int)veinPool[num11].type, (int)veinPool[num11].groupIndex, veinPool[num11].pos);
                                         }
                                     }
                                 }
