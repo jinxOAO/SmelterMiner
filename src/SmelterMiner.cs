@@ -18,6 +18,7 @@ using System.IO;
 namespace SmelterMiner
 {
     [BepInDependency("me.xiaoye97.plugin.Dyson.LDBTool", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(CompatManager.GB_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(CommonAPIPlugin.GUID)]
     [CommonAPISubmoduleDependency(nameof(ProtoRegistry), nameof(TabSystem), nameof(LocalizationModule))]
     [BepInPlugin("Gnimaerd.DSP.plugin.SmelterMiner", "SmelterMiner", "1.6")]
@@ -44,6 +45,8 @@ namespace SmelterMiner
         public static ResourceData resources;
         void Awake()
         {
+            CompatManager.Init();
+
             var ab = AssetBundle.LoadFromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SmelterMiner.scmicons"));
             iconA = ab.LoadAsset<Sprite>("SmelterMinerA");
             iconB = ab.LoadAsset<Sprite>("SmelterMinerB");
@@ -116,8 +119,11 @@ namespace SmelterMiner
             ProductMapC.Add(1015, 1124);
             SmelterRatio.Add(1124, 2);
 
-            ProductMapC.Add(1117, 7709);
-            SmelterRatio.Add(7709, 8);
+            if (CompatManager.GB)
+            {
+                ProductMapC.Add(1117, 7709);
+                SmelterRatio.Add(7709, 8);
+            }
 
             //ProductMapC.Add(1005, 1003);
             //SmelterRatio.Add(1003, 10);
