@@ -21,7 +21,7 @@ namespace SmelterMiner
     [BepInDependency(CompatManager.GB_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(CommonAPIPlugin.GUID)]
     [CommonAPISubmoduleDependency(nameof(ProtoRegistry), nameof(TabSystem), nameof(LocalizationModule))]
-    [BepInPlugin("Gnimaerd.DSP.plugin.SmelterMiner", "SmelterMiner", "1.6")]
+    [BepInPlugin("Gnimaerd.DSP.plugin.SmelterMiner", "SmelterMiner", "1.7")]
     public class SmelterMiner : BaseUnityPlugin
     {
         public static string GUID = "Gnimaerd.DSP.plugin.SmelterMiner";
@@ -129,7 +129,8 @@ namespace SmelterMiner
             //SmelterRatio.Add(1003, 10);
 
             ProductMapO.Add(1007, 1114);
-            SmelterRatio.Add(1007, 1);
+            //SmelterRatio.Add(1007, 1);
+            SmelterRatio.Add(1114, 1);
 
             //LDBTool.PreAddDataAction += AddTranslate;
             //LDBTool.PreAddDataAction += AddTranslate2;
@@ -141,6 +142,7 @@ namespace SmelterMiner
             AddTranslate4();
             LDBTool.PostAddDataAction += AddSmelterMiners;
             Harmony.CreateAndPatchAll(typeof(SmelterMiner));
+            Harmony.CreateAndPatchAll(typeof(ProductionExtraInfoPather));
         }
 
         public static int SmeltIt(int minerID, int OreID)
