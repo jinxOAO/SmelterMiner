@@ -325,7 +325,6 @@ namespace SmelterMiner
                                                 Vector3 pos = veinPool[num].pos;
                                                 factory.RemoveVeinWithComponents(num);
                                                 factory.RecalculateVeinGroup(groupIndex);
-                                                factory.NotifyVeinExhausted(veinType, groupIndex2, pos);
                                             }
                                             else
                                             {
@@ -416,10 +415,6 @@ namespace SmelterMiner
                                         short groupIndex2 = veinPool[num11].groupIndex;
                                         veinGroups2[(int)groupIndex2].amount = veinGroups2[(int)groupIndex2].amount - (long)num14;
                                         factory.veinAnimPool[num11].time = ((veinPool[num11].amount >= 25000) ? 0f : (1f - (float)veinPool[num11].amount * VeinData.oilSpeedMultiplier));
-                                        if (veinPool[num11].amount <= 2500)
-                                        {
-                                            factory.NotifyVeinExhausted((int)veinPool[num11].type, (int)veinPool[num11].groupIndex, veinPool[num11].pos);
-                                        }
                                     }
                                 }
                                 __instance.productCount += num13;
